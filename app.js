@@ -13,6 +13,7 @@ const app = express();
   origin: '*',  // Allows requests from this frontend url
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: '*',
+  credentials: true,
 }));
 
 app.options('*', cors({
