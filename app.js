@@ -61,7 +61,7 @@ try{
 // importing apis
   const chat = require("./routes/chatRoute");
   const district = require("./routes/districtRoute")
-  // const sendEmail = require("./routes/sendEmailRoute")
+  const sendEmail = require("./routes/sendEmailRoute")
   const tokenVerify = require("./routes/tokenVerifyRoute");
   const status = require("./routes/statusRoute");
 
@@ -83,7 +83,7 @@ try{
 // assigning the apis
 app.use("/api",chat);
 app.use("/api",district);
-// app.use("/api",sendEmail);
+app.use("/api",sendEmail);
 
 
 app.use("/api",tokenVerify);
