@@ -9,25 +9,27 @@ require('dotenv').config(); // to access the values .env file
 
 const app = express();
 // https://ayush-sih-2024-frontend.vercel.app/
-  app.use(cors({                    
-  origin: '*',  // Allows requests from this frontend url
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: '*',
-  credentials: true,
-}));
 
-app.options('*', cors({
-  origin: '*',
+// Configure CORS to allow specific origins and handle credentials
+const corsOptions = {
+  origin: 'https://ayush-sih-2024-frontend.vercel.app',  // Explicitly allow this frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: '*',
-  credentials: true, // If you're using cookies or sessions
-}));
+  allowedHeaders: ['Content-Type', 'authorization'],
+  credentials: true,  // Allow credentials (cookies, authorization headers)
+};
+
+// Apply the CORS middleware with options
+app.use(cors(corsOptions));
+
+// Handle preflight (OPTIONS) requests
+app.options('*', cors(corsOptions));
+
 
 // Middleware
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+
 
 try{
 // MongoDB Atlas Connection
