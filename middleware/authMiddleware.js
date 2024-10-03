@@ -13,7 +13,7 @@ const authenticateJWT = (req, res, next) => {
             return res.status(200).json({ tokenSuccess: true, message: 'Token is Valid' });
         });
     } else {
-        return res.status(401).json({ tokenSuccess: false, error: 'Authorization token missing. -> from backend' });
+        return res.status(406).json({ tokenSuccess: false, error: 'Authorization token missing. -> from backend' });
     }
 };
 

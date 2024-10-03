@@ -10,13 +10,13 @@ require('dotenv').config(); // to access the values .env file
 const app = express();
 // https://ayush-sih-2024-frontend.vercel.app/
   app.use(cors({                    
-  origin: ['http://localhost:5173', 'https://ayush-sih-2024-frontend.vercel.app',/^https:\/\/ayush-sih-2024-frontend\.vercel\.app(\/.*)?$/ ],  // Allows requests from this frontend url
+  origin: '*',  // Allows requests from this frontend url
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: '*',
 }));
 
 app.options('*', cors({
-  origin: ['http://localhost:5173', 'https://ayush-sih-2024-frontend.vercel.app', /^https:\/\/ayush-sih-2024-frontend\.vercel\.app(\/.*)?$/],
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: '*',
   credentials: true, // If you're using cookies or sessions
