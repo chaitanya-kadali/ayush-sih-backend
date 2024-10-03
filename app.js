@@ -57,10 +57,10 @@ mongoose.connect(mongoUri)
 
 // importings of persons
   const farmer = require("./routes/farmerRoute");
-  // const doctor = require("./routes/doctorRoute");
+  const doctor = require("./routes/doctorRoute");
   const startup = require("./routes/startUpRoute");
-  // const licensingAuthority = require("./routes/LicensingAuthorityRoute");
-  // const drugInspector = require("./routes/drugInspectorRoute");
+  const licensingAuthority = require("./routes/LicensingAuthorityRoute");
+  const drugInspector = require("./routes/drugInspectorRoute");
 
 // importing apis
   // const chat = require("./routes/chatRoute");
@@ -75,10 +75,10 @@ mongoose.connect(mongoUri)
 
 // assigning the persons
   app.use("/api",farmer);
-  // app.use("/api",doctor);
+  app.use("/api",doctor);
   app.use("/api",startup);
-  // app.use("/api",licensingAuthority);
-  // app.use("/api",drugInspector);
+  app.use("/api",licensingAuthority);
+  app.use("/api",drugInspector);
 
 // assigning the apis
 // app.use("/api",chat);
