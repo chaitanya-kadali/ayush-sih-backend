@@ -48,7 +48,7 @@ mongoose.connect(mongoUri)
 // importings of persons
   const farmer = require("./routes/farmerRoute");
   // const doctor = require("./routes/doctorRoute");
-  // const startup = require("./routes/startUpRoute");
+  const startup = require("./routes/startUpRoute");
   // const licensingAuthority = require("./routes/LicensingAuthorityRoute");
   // const drugInspector = require("./routes/drugInspectorRoute");
 

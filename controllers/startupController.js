@@ -4,7 +4,7 @@ const StartupdashModel=require("../models/StartupDashModel");  //object for Star
 const Farmer = require("../models/farmerModel");  //object of Farmer collection
 const Doctor = require("../models/doctormodel");  //object of Doctor collection
 const catchAsyncErrors = require("../middleware/catchAsyncErrors"); // by default error catcher
-const {Startupschema}=require("../middleware/schemaValidator");  //validate Doctor schema 
+// const {Startupschema}=require("../middleware/schemaValidator");  //validate Doctor schema 
 const Status = require("../models/applicationStatus");
 require('dotenv').config();
 const axios = require("axios");
@@ -29,8 +29,8 @@ exports.createStartUp= catchAsyncErrors( async (req, res) => {
     }
 
     // Validate the request body using Joi
-    const { error } = Startupschema.validate({ Email_ID,password,companyName,address ,city,pinCode,
-      state,district,phone_number});
+    // const { error } = Startupschema.validate({ Email_ID,password,companyName,address ,city,pinCode,
+      // state,district,phone_number});
   if (error) {
     // If validation fails, return the error message
     console.log("schema not validated");
@@ -39,7 +39,7 @@ exports.createStartUp= catchAsyncErrors( async (req, res) => {
   try {
     
     const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = bcrypt.hash(password, saltRounds);
 
     // Create new user instance with hashed password
     const newStatus= new Status({
@@ -53,14 +53,15 @@ exports.createStartUp= catchAsyncErrors( async (req, res) => {
       state,district,phone_number,role:"Startup"});
 
     // Save the user to the database
-    await NewstartUp.save();
-    await newStatus.save();
+     NewstartUp.save();
+     newStatus.save();
 
     res.status(201).json({data:NewstartUp, success:true,message:"Startup successfully created"});
   } catch (error) {
     console.error('Error:', error);
     res.status(400).json({ error: error.message , success:false});
   }
+
 });
 
 //login for Startup
