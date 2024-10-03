@@ -64,9 +64,9 @@ mongoose.connect(mongoUri)
   // const Pdfmanagement=require("./routes/pdfUploadingRoute");
 
 // assigning the persons
-  // app.use("/api",farmer);
+  app.use("/api",farmer);
   // app.use("/api",doctor);
-  // app.use("/api",startup);
+  app.use("/api",startup);
   // app.use("/api",licensingAuthority);
   // app.use("/api",drugInspector);
 
