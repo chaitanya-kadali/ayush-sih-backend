@@ -56,8 +56,8 @@ mongoose.connect(mongoUri)
   // const chat = require("./routes/chatRoute");
   // const district = require("./routes/districtRoute")
   // const sendEmail = require("./routes/sendEmailRoute")
-  // const tokenVerify = require("./routes/tokenVerifyRoute");
-  // const status = require("./routes/statusRoute");
+  const tokenVerify = require("./routes/tokenVerifyRoute");
+  const status = require("./routes/statusRoute");
   // const pdfQualityCheck=require("./routes/PdfQualityCheck");
   // const verifyQuideline=require("./routes/VerifyQuidelineRoute");
   // const PeerForum=require("./routes/PeerForumRoute");
@@ -76,8 +76,8 @@ mongoose.connect(mongoUri)
 // app.use("/api",sendEmail);
 
 
-// app.use("/api",tokenVerify);
-// app.use("/api",status);
+app.use("/api",tokenVerify);
+app.use("/api",status);
 // app.use("/api",pdfQualityCheck);
 // app.use("/api",verifyQuideline);
 // app.use("/api",PeerForum);
