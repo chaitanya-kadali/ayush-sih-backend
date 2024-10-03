@@ -8,9 +8,7 @@ const session = require('express-session');
 require('dotenv').config(); // to access the values .env file
 
 const app = express();
-// https://ayush-sih-2024-frontend.vercel.app/
 
-// Configure CORS to allow specific origins and handle credentials
 const corsOptions = {
   origin: 'https://ayush-sih-2024-frontend.vercel.app',  // Explicitly allow this frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -18,7 +16,7 @@ const corsOptions = {
   credentials: true,  // Allow credentials (cookies, authorization headers)
 };
 
-// Apply the CORS middleware with options
+
 app.use(cors(corsOptions));
 
 // Handle preflight (OPTIONS) requests
@@ -32,28 +30,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 try{
-// MongoDB Atlas Connection
-const mongoUri = "mongodb+srv://aayushdb:Ayush123@cluster0.dbb2fbo.mongodb.net/aayushdb?retryWrites=true&w=majority&appName=Cluster0;"
+        // MongoDB Atlas Connection
+        const mongoUri = "mongodb+srv://aayushdb:Ayush123@cluster0.dbb2fbo.mongodb.net/aayushdb?retryWrites=true&w=majority&appName=Cluster0;"
 
-if (!mongoUri) {
-    console.error('MongoDB URI not defined in .env file.');
-    process.exit(1);
-}
+        if (!mongoUri) {
+            console.error('MongoDB URI not defined in .env file.');
+            process.exit(1);
+        }
 
-mongoose.connect(mongoUri)
-.then(() => {
+        mongoose.connect(mongoUri)
+        .then(() => {
 
-    console.log('Connected to MongoDB Atlas CLOUD !!');
+            console.log('Connected to MongoDB Atlas CLOUD !!');
 
-})
-.catch((error) => {
-    console.error('Error connecting to MongoDB Atlas:', error);
-});
-
-// mongoose.connect('mongodb://localhost:27017/aayushdb');
-}catch(e){
-  console.log("cloud connecting error");
-}
+        })
+        .catch((error) => {
+            console.error('Error connecting to MongoDB Atlas:', error);
+        });
+  }catch(e){
+    console.log("cloud connecting error");
+  }
 
 // importings of persons
   const farmer = require("./routes/farmerRoute");
@@ -63,14 +59,18 @@ mongoose.connect(mongoUri)
   const drugInspector = require("./routes/drugInspectorRoute");
 
 // importing apis
-  // const chat = require("./routes/chatRoute");
-  // const district = require("./routes/districtRoute")
+  const chat = require("./routes/chatRoute");
+  const district = require("./routes/districtRoute")
   // const sendEmail = require("./routes/sendEmailRoute")
   const tokenVerify = require("./routes/tokenVerifyRoute");
   const status = require("./routes/statusRoute");
+
+// const PeerForum=require("./routes/PeerForumRoute");
+
+// pdf routes
+
   // const pdfQualityCheck=require("./routes/PdfQualityCheck");
   // const verifyQuideline=require("./routes/VerifyQuidelineRoute");
-  // const PeerForum=require("./routes/PeerForumRoute");
   // const Pdfmanagement=require("./routes/pdfUploadingRoute");
 
 // assigning the persons
@@ -81,8 +81,8 @@ mongoose.connect(mongoUri)
   app.use("/api",drugInspector);
 
 // assigning the apis
-// app.use("/api",chat);
-// app.use("/api",district);
+app.use("/api",chat);
+app.use("/api",district);
 // app.use("/api",sendEmail);
 
 
