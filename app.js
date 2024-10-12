@@ -9,8 +9,22 @@ require('dotenv').config(); // to access the values .env file
 
 const app = express();
 
+// List of allowed origins
+const allowedOrigins = [
+  'https://ayush-sih-2024-frontend.vercel.app',
+  'https://chaitanyakadali.vercel.app'
+];
+
+// Dynamic origin function
 const corsOptions = {
-  origin: 'https://ayush-sih-2024-frontend.vercel.app',  // Explicitly allow this frontend
+  origin: function (origin, callback) {
+    // If no origin or origin is in the allowed list, allow it
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS --->said by dynamic function'));
+    }
+  },  // Explicitly allow this frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'authorization'],
   credentials: true,  // Allow credentials (cookies, authorization headers)
