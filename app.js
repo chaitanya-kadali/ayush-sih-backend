@@ -10,7 +10,7 @@ require('dotenv').config(); // to access the values .env file
 const app = express();
 
 const corsOptions = {
-  origin: 'https://ayush-sih-2024-frontend.vercel.app',  // Explicitly allow this frontend
+  origin: ['https://ayush-sih-2024-frontend.vercel.app','https://chaitanyakadali.vercel.app'],  // Explicitly allow this frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'authorization'],
   credentials: true,  // Allow credentials (cookies, authorization headers)
