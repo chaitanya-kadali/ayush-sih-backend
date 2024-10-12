@@ -28,7 +28,7 @@ const sendEmailFunc = async (req, res) => {
             }
             console.log('Message sent: successfully');
         });
-        res.json({ success: true, message: 'email is successfully sent !'});
+        res.json({ success: true, message: `email is successfully sent ! ${email}`});
     }catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ success: false, error: 'Internal server error'});
