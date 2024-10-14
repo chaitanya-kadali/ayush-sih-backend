@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 try{
         // MongoDB Atlas Connection
-        const mongoUri = "mongodb+srv://aayushdb:Ayush123@cluster0.dbb2fbo.mongodb.net/aayushdb?retryWrites=true&w=majority&appName=Cluster0;"
+        const mongoUri = process.env.MONGO_URI;
 
         if (!mongoUri) {
             console.error('MongoDB URI not defined in .env file.');
